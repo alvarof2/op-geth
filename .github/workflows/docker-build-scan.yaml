@@ -58,3 +58,5 @@ jobs:
           dockerfile: Dockerfile.bootnode
           push: true
           trivy: ${{ startsWith(github.ref, 'refs/heads/celo') }}
+
+          
