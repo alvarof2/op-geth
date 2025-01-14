@@ -56,5 +56,5 @@ jobs:
           commitish: ${{ github.ref }}
           body: |
             Celo op-geth ${{ github.event.inputs.release_tag }} is a fork of [ethereum-optimism/op-geth](https://github.com/ethereum-optimism/op-geth) ${{ github.event.inputs.forked_from }}.
-          draft: false
+          draft: true
           prerelease: false
