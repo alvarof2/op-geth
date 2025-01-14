@@ -1,0 +1,35 @@
+name: Publish Docker Image For Release
+
+on:
+  release:
+    types: [published]  # Trigger the workflow only when a release is published
+
+jobs:
+  get-release-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Retrieve release commit information
+      - name: Get Release Commit
+        run: |
+          # Get the tag name of the published release
+          RELEASE_TAG=${{ github.event.release.tag_name }}
+
+          # Fetch the commit associated with the tag
+          RELEASE_COMMIT=$(git rev-list -n 1 "$RELEASE_TAG")
+
+          # Output the commit
+          echo "Release Tag: $RELEASE_TAG"
+          echo "Release Commit: $RELEASE_COMMIT"
+
+          # Save the commit hash as a GitHub Actions output variable
+          echo "release_commit=$RELEASE_COMMIT" >> $GITHUB_ENV
+
+      # Step 3: Use the release commit (optional)
+      - name: Use Release Commit
+        run: |
+          echo "The release is associated with commit: ${{ env.release_commit }}"
