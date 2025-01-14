@@ -1,4 +1,4 @@
-name: Create First Release For A Branch
+name: Create First Draft Release For A Branch
 
 on:
   workflow_dispatch:
