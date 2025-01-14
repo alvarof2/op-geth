@@ -37,6 +37,9 @@ jobs:
           echo "The release is associated with tag: ${{ steps.get-release-info.outputs.tag }}"
           echo "The release is associated with commit: ${{ steps.get-release-info.outputs.commit }}"
 
+          # TO DO: Copy the docker image from us-west1-docker.pkg.dev/blockchaintestsglobaltestnet/dev-images/op-geth:${COMMIT_HASH}
+          # to https://us-west1-docker.pkg.dev/devopsre/celo-blockchain-public/op-geth:${TAG_NAME} 
+
       # Step 3: Append Tag and Commit to Release Notes
       - name: Update Release Notes
         env:
@@ -49,7 +52,7 @@ jobs:
           CURRENT_BODY="${{ github.event.release.body }}"
 
           # Append tag and commit to the release notes
-          UPDATED_NOTES="${CURRENT_BODY}\n\n---\n**Docker Image:** us-west1-docker.pkg.dev/devopsre/celo-blockchain-public/op-geth:${TAG_NAME}\n**Release Tag:** ${TAG_NAME}\n**Commit Hash:** ${COMMIT_HASH}"
+          UPDATED_NOTES="${CURRENT_BODY}\n\n---\n**Docker Image:** https://us-west1-docker.pkg.dev/devopsre/celo-blockchain-public/op-geth:${TAG_NAME}\n**Release Tag:** ${TAG_NAME}\n**Commit Hash:** ${COMMIT_HASH}"
 
           # Update the release notes using GitHub API
           curl -X PATCH \
