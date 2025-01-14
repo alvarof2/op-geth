@@ -32,12 +32,12 @@ jobs:
         id: check_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: main # Specify the branch to check for releases
         run: |
           RELEASES=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
                       -H "Accept: application/vnd.github.v3+json" \
                       "https://api.github.com/repos/${{ github.repository }}/releases")
 
+          BRANCH="${{ github.ref_name }}" # Current branch
           if echo "$RELEASES" | jq -e ".[] | select(.target_commitish == \"$BRANCH\")" > /dev/null; then
             echo "Release exists for branch $BRANCH."
             echo "release_exists=true" >> $GITHUB_ENV
