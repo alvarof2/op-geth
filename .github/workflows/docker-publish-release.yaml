@@ -26,10 +26,12 @@ jobs:
           echo "Release Tag: $RELEASE_TAG"
           echo "Release Commit: $RELEASE_COMMIT"
 
-          # Save the commit hash as a GitHub Actions output variable
+          # Save the tag and commit hash as a GitHub Actions output variable
+          echo "release_tag=$RELEASE_TAG" >> $GITHUB_ENV
           echo "release_commit=$RELEASE_COMMIT" >> $GITHUB_ENV
 
       # Step 3: Use the release commit (optional)
       - name: Use Release Commit
         run: |
+          echo "The release is associated with tag: ${{ env.release_tag }}"
           echo "The release is associated with commit: ${{ env.release_commit }}"
