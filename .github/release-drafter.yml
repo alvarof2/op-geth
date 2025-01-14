@@ -1,20 +1,8 @@
 #tag-template: '${{ env.BRANCH_NAME }}-v$RESOLVED_VERSION'
-name-template: 'CELO OP-GETH - v$RESOLVED_VERSION 🌈'
+name-template: 'Celo op-geth v$RESOLVED_VERSION'
 filter-by-commitish: true
-categories:
-  - title: '🚀 Nginx One'
-    label: 'nginx-one'
-  - title: '🐛 Nginx Two'
-    labels: 'nginx-two'
-autolabeler:
-  - label: 'nginx-one'
-    files:
-      - 'nginx-one/**/*'
-  - label: 'nginx-two'
-    files:
-      - 'nginx-two/**/*'
-exclude-labels:
-  - 'skip-release-drafter'
+version-resolver:
+  default: patch
 template: |
   ## What’s Changed
 
