@@ -67,6 +67,5 @@ jobs:
         # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
         with:
           tag: v$RESOLVED_VERSION
-          commitish: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
