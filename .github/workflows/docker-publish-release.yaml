@@ -43,10 +43,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Default token provided by GitHub Actions
         run: |
           # Get the current release notes
-          RELEASE_URL=${{ github.event.release.url }}
-          TAG_NAME=${{ steps.get-release-info.outputs.tag }}
-          COMMIT_HASH=${{ steps.get-release-info.outputs.commit }}
-          CURRENT_BODY=${{ github.event.release.body }}
+          RELEASE_URL="${{ github.event.release.url }}"
+          TAG_NAME="${{ steps.get-release-info.outputs.tag }}"
+          COMMIT_HASH="${{ steps.get-release-info.outputs.commit }}"
+          CURRENT_BODY="${{ github.event.release.body }}"
 
           # Append tag and commit to the release notes
           UPDATED_NOTES="${CURRENT_BODY}\n\n---\n**Release Tag:** ${TAG_NAME}\n**Commit Hash:** ${COMMIT_HASH}"
