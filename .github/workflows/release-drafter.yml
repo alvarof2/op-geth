@@ -38,14 +38,12 @@ jobs:
                       "https://api.github.com/repos/${{ github.repository }}/releases")
 
           BRANCH="${{ github.ref_name }}" # Current branch
-          RELEASES_JQ=$(echo "$RELEASES" | jq .[])
-          echo "$RELEASES_JQ"
           if echo "$RELEASES" | jq -e ".[] | select(.target_commitish == \"$BRANCH\")" > /dev/null; then
             echo "Release exists for branch $BRANCH."
-            echo "release_exists=true" >> $GITHUB_ENV
+            echo "release_exists=true" >> $GITHUB_OUTPUT
           else
             echo "No release found for branch $BRANCH."
-            echo "release_exists=false" >> $GITHUB_ENV
+            echo "release_exists=false" >> $GITHUB_OUTPUT
           fi
 
   update-release-draft:
