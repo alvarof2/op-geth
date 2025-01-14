@@ -1,4 +1,4 @@
-name: Create First Release
+name: Create First Release For A Branch
 
 on:
   workflow_dispatch:
@@ -27,6 +27,7 @@ jobs:
         with:
           tag_name: ${{ github.event.inputs.release_tag }}
           release_name: Celo op-geth ${{ github.event.inputs.release_tag }}
+          commitish: ${{ github.ref_name }}
           body: |
             Celo op-geth ${{ github.event.inputs.release_tag }} is a fork of op-geth ${{ github.event.inputs.forked_from }}.
           draft: false
