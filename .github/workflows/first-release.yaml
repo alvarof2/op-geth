@@ -1,0 +1,33 @@
+name: Create First Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'The tag for the release (e.g., v1.0.0)'
+        required: true
+      forked_from:
+        description: 'The op-geth version this release is forked from (e.g., v1.0.0)'
+        required: true
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.event.inputs.release_tag }}
+          release_name: Celo op-geth ${{ github.event.inputs.release_tag }}
+          body: |
+            Celo op-geth ${{ github.event.inputs.release_tag }} is a fork of op-geth ${{ github.event.inputs.forked_from }}.
+          draft: false
+          prerelease: false

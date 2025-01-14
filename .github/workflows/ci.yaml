@@ -1,16 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - master
-      - celo*
-
-  pull_request:
-    branches:
-      - master
-      - celo*
-
   workflow_dispatch:
 
 permissions:

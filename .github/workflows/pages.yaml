@@ -1,9 +1,5 @@
 name: Build and publish forkdiff github-pages
 on:
-  push:
-    branches:
-      - celo[0-9]+
-
   workflow_dispatch:
 
 permissions:
