@@ -1,15 +1,6 @@
 name: e2e-test-deployed-network
 
 on:
-  schedule:
-    - cron: "0 14 * * *"
-  pull_request:
-    branches:
-      - master
-      - celo*
-    paths:
-      - 'e2e_test/**'
-
   workflow_dispatch:
 
 permissions:
