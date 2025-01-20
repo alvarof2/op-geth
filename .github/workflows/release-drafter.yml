@@ -1,4 +1,4 @@
-name: Release Drafter
+name: "[cLabs] Release Drafter After First Release"
 
 on:
   push:
