@@ -26,6 +26,7 @@ jobs:
           # Output the commit
           echo "Release Tag: $RELEASE_TAG"
           echo "Release Commit: $RELEASE_COMMIT"
+          echo "GH Ref: ${{ github.ref }}"
 
           # Save outputs for later steps
           echo "::set-output name=tag::$RELEASE_TAG"
