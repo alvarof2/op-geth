@@ -64,6 +64,6 @@ jobs:
       - uses: release-drafter/release-drafter@v6
         # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
         with:
-          tag: celo-release-v$RESOLVED_VERSION
+          tag: celo-v$RESOLVED_VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
